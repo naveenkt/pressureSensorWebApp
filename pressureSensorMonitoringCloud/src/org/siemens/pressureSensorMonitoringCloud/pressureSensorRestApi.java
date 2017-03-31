@@ -48,7 +48,7 @@ public class pressureSensorRestApi {
 		{
 			//System.out.println("Error "+ ex);
 		}
-		return "Hello from sensor api cloud New";
+		return "Hello from sensor api cloud New Naveen";
 	}
 	
 
