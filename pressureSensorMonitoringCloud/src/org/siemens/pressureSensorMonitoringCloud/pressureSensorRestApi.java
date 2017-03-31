@@ -24,7 +24,7 @@ public class pressureSensorRestApi {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String sayPlainTextHello() {
 		
-		/*
+		
 		Configuration config =  ServiceBusConfiguration.configureWithSASAuthentication(
 			            "siemensbusns",
 			            "RootManageSharedAccessKey",
@@ -47,7 +47,7 @@ public class pressureSensorRestApi {
 		catch(Exception ex)
 		{
 			//System.out.println("Error "+ ex);
-		}*/
+		}
 		return "Hello from sensor api cloud Updated";
 	}
 	
