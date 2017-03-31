@@ -17,7 +17,7 @@ import com.microsoft.windowsazure.exception.ServiceException;
 
 import javax.xml.datatype.*;
 
-@Path("/hello")
+@Path("/uploadData")
 public class pressureSensorRestApi {
 	
 	@GET
