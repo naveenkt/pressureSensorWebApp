@@ -20,16 +20,17 @@ import com.microsoft.windowsazure.core.*;
 import com.microsoft.windowsazure.exception.ServiceException;
 
 
+
 import javax.xml.datatype.*;
 
-@Path("/hello")
+@Path("/psrestcalls")
 public class pressureSensorRestApi {
 	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String sayPlainTextHello() {
 		
-		
+		/*
 		Configuration config =  ServiceBusConfiguration.configureWithSASAuthentication(
 			            "siemensbusns",
 			            "RootManageSharedAccessKey",
@@ -52,17 +53,18 @@ public class pressureSensorRestApi {
 		catch(Exception ex)
 		{
 			//System.out.println("Error "+ ex);
-		}
+		}*/
 		return "Hello from sensor api cloud New Naveen";
 	}
 	
 	
 	@POST
-	@Path("/postsensordata")
+	@Path("/sendpdata")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response pushdata(String mesg) {
+	public Response createTrackInJSON(String mesg) {
 
-		String result = "Time series data saved : " + mesg;
+		String result = "Track saved : " + mesg;
+		
 		Configuration config =  ServiceBusConfiguration.configureWithSASAuthentication(
 	            "siemensbusns",
 	            "RootManageSharedAccessKey",
@@ -86,21 +88,11 @@ public class pressureSensorRestApi {
 		{
 			//System.out.println("Error "+ ex);
 		}
+		
+		
 		return Response.status(200).entity(result).build();
 
 	}
-	
-	/*
-	@POST
-	@Path("/post")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createProductInJSON(product p1) {
-
-		String result = "Product created : " + p1.getName();
-		return Response.status(201).entity(result).build();
-
-	}
-	*/
 	
 
 }
