@@ -63,6 +63,29 @@ public class pressureSensorRestApi {
 	public Response pushdata(String mesg) {
 
 		String result = "Time series data saved : " + mesg;
+		Configuration config =  ServiceBusConfiguration.configureWithSASAuthentication(
+	            "siemensbusns",
+	            "RootManageSharedAccessKey",
+	            "YMv+pxgk8yqKsZY2KrnelyyyDLAg7FQaRERmUTavRLY=",
+	            ".servicebus.windows.net"
+	            );
+		ServiceBusContract service = ServiceBusService.create(config);
+		try
+		{
+			QueueInfo queueInfo = new QueueInfo("TestQueue");
+			try
+			{
+				BrokeredMessage message = new BrokeredMessage("sn1");
+				service.sendQueueMessage("TestQueue", message);
+			}
+			catch (ServiceException e)
+			{
+			}
+		}
+		catch(Exception ex)
+		{
+			//System.out.println("Error "+ ex);
+		}
 		return Response.status(200).entity(result).build();
 
 	}
