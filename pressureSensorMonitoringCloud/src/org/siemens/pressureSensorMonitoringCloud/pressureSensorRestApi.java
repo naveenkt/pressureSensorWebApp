@@ -62,7 +62,7 @@ public class pressureSensorRestApi {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response pushdata(String mesg) {
 
-		String result = "Track saved : " + mesg;
+		String result = "Time series data saved : " + mesg;
 		return Response.status(200).entity(result).build();
 
 	}
